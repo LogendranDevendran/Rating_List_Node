@@ -8,6 +8,7 @@ var bodyParser = require("body-parser");
 var db = require("./db");
 // Rating API routes reference
 var rating = require("./routes/rating");
+var constants = require("./constants");
 var app = express();
 
 /* This allows the end to access in the cross origin */
@@ -53,7 +54,7 @@ app.use(function(err, req, res, next) {
 });
 
 // Connect to Mongo on start
-db.connect("mongodb://127.0.0.1:27017/", function(err) {
+db.connect(constants.MONGODB_URL, function(err) {
   if (err) {
     process.exit(1);
   }
